@@ -1472,7 +1472,7 @@ class ESP8266V3FirmwareImage(BaseFirmwareImage):
     can be placed in the normal image (just @ 64kB padded offsets).
     """
 
-    ROM_LOADER = ESP32ROM
+    ROM_LOADER = ESP8266ROM
 
     # ROM bootloader will read the wp_pin field if SPI flash
     # pins are remapped via flash. IDF actually enables QIO only

@@ -119,6 +119,8 @@ choice ESPTOOLPY_FLASHSIZE
 		SPI flash size, in megabytes. Users must not configure a larger value than their real flash size.
 		Otherwise an unexpected result may cause if users read/write a wrong address of flash.
 
+config ESPTOOLPY_FLASHSIZE_512KB
+        bool "512 KB"
 config ESPTOOLPY_FLASHSIZE_1MB
 	bool "1 MB"
 config ESPTOOLPY_FLASHSIZE_2MB
@@ -133,6 +135,7 @@ endchoice
 
 config ESPTOOLPY_FLASHSIZE
 	string
+	default "512KB" if ESPTOOLPY_FLASHSIZE_512KB
 	default "1MB" if ESPTOOLPY_FLASHSIZE_1MB
 	default "2MB" if ESPTOOLPY_FLASHSIZE_2MB
 	default "4MB" if ESPTOOLPY_FLASHSIZE_4MB
@@ -141,6 +144,7 @@ config ESPTOOLPY_FLASHSIZE
 
 config SPI_FLASH_SIZE
 	hex
+	default 0x80000 if ESPTOOLPY_FLASHSIZE_512KB
 	default 0x100000 if ESPTOOLPY_FLASHSIZE_1MB
 	default 0x200000 if ESPTOOLPY_FLASHSIZE_2MB
 	default 0x400000 if ESPTOOLPY_FLASHSIZE_4MB
